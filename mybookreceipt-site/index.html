@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>독서 영수증 기록</title>
+<title>독서 영수증</title>
 <meta name="description" content="읽은 책을 영수증으로 발행하고 이미지로 저장하세요. 월간·연간 독서 결산도 한 장으로 만들 수 있는 무료 도구.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap" rel="stylesheet">
@@ -27,8 +27,8 @@ button.p{padding:12px 18px;border:0;border-radius:10px;background:var(--ink);col
 .pre{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.pre button{padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);font:inherit;font-size:13px;cursor:pointer}.pre button.on{background:var(--ink);color:var(--card);border-color:var(--ink)}
 .li{list-style:none;margin:10px 0 0;padding:0}.li li{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}.li small{color:var(--mute)}.li button{border:0;background:transparent;color:var(--mute);cursor:pointer;font-size:18px}
 .fun{text-align:center;margin:0 0 12px;line-height:1.55}.fun b{font-size:16px}.fun .em{font-size:36px}.opt{color:var(--mute);font-size:12px;margin:6px 0 0}
-.stage{display:flex;justify-content:center;padding:6px 0}
-.rcp{width:290px;background:#fdfdfb;color:#111;padding:22px 20px 28px;font-family:"Nanum Gothic Coding","Courier New",monospace;font-size:12.5px;line-height:1.6;box-shadow:0 3px 14px rgba(0,0,0,.16);-webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/12px 100%;mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/12px 100%}
+.stage{display:flex;justify-content:center;padding:34px 16px;border-radius:14px;background:radial-gradient(ellipse at center,#f4ebda,#e5d8bf)}.rsh{filter:drop-shadow(0 6px 8px rgba(90,70,40,.3))}
+.rcp{width:290px;background:#fdfdfb;color:#111;padding:26px 20px 32px;font-family:"Nanum Gothic Coding","Courier New",monospace;font-size:12.5px;line-height:1.6;-webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/10px 51% repeat-x,conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) top/10px 51% repeat-x;mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/10px 51% repeat-x,conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) top/10px 51% repeat-x}
 .rcp h2{text-align:center;margin:0;font-size:18px;letter-spacing:2px}.rcp .t{text-align:center;font-size:11px;color:#555}
 .rcp .hl{font-size:14px;font-weight:700;margin:2px 0}.rcp .sm{font-size:11px}.rcp .xs{font-size:10px;color:#888}.rcp .by{padding-left:1.7em;color:#555;font-size:11px}
 .rcp .d{border-top:1px dashed #333;margin:8px 0}
@@ -36,22 +36,17 @@ button.p{padding:12px 18px;border:0;border-radius:10px;background:var(--ink);col
 .rcp .tot{font-weight:700;font-size:15px}
 .rcp .bc{height:32px;margin:10px auto 4px;width:80%;background:repeating-linear-gradient(90deg,#111 0 2px,#fff 2px 4px,#111 4px 5px,#fff 5px 9px,#111 9px 12px,#fff 12px 14px)}
 .ft{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:6px 0 24px}.ft button{border:1px solid var(--line);background:transparent;color:var(--mute);border-radius:8px;padding:7px 11px;font:inherit;font-size:12px;cursor:pointer}
-.topnav{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;padding:12px;font-size:14px}.topnav a{color:var(--mute);text-decoration:none;padding:4px 2px}.topnav a.on{color:var(--ink);font-weight:700;border-bottom:2px solid var(--ink)}
-.ad{min-height:90px;border:1px dashed var(--line);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--mute);font-size:12px;margin-bottom:14px}
-.rl a{display:block;padding:9px 0;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);font-size:14px}.rl a:last-child{border:0;color:var(--mute)}
-.sf{text-align:center;color:var(--mute);font-size:12px;line-height:1.9;padding:8px 0 32px}.sf a{color:inherit}</style><link rel="canonical" href="https://mybookreceipt.online/">
-<!-- ADSENSE: 승인 후 여기에 애드센스 스크립트를 붙여넣으세요 -->
-</head><body><nav class="topnav"><a href="index.html" class="on">홈</a><a href="about/index.html">소개</a><a href="guide/index.html">사용법</a><a href="articles/index.html">독서 기록법</a><a href="privacy/index.html">개인정보처리방침</a><a href="contact/index.html">문의</a></nav><div class="w">
+</style></head><body><div class="w">
 <h1>🧾 독서 영수증 기록</h1><p class="sub">읽은 책을 영수증으로 남겨요</p>
 <div class="mode"><button class="mt on" data-p="p-simple">읽은 책</button><button class="mt" data-p="p-sum">결산</button></div>
 <section class="pn on" id="p-simple"><div class="c"><h3>다 읽은 책을 영수증으로 · 제목만 있어도 돼요</h3>
 <label class="fld" for="s-title">도서명</label><input class="fi2" id="s-title" placeholder="예) 매일의 글쓰기" maxlength="40">
-<div class="g2"><div><label class="fld" for="s-author">저자 (선택)</label><input class="fi2" id="s-author" placeholder="예) 김한솔이" maxlength="20"></div><div><label class="fld" for="s-date">완독일</label><input class="fi2" id="s-date" type="date"></div></div>
+<div class="g2"><div><label class="fld" for="s-author">저자 (선택)</label><input class="fi2" id="s-author" maxlength="20"></div><div><label class="fld" for="s-date">완독일</label><input class="fi2" id="s-date" type="date"></div></div>
 <div class="g3"><div><label class="fld" for="s-pages">쪽수</label><input class="fi2" id="s-pages" type="number" min="0" inputmode="numeric"></div><div><label class="fld" for="s-mins">시간(분)</label><input class="fi2" id="s-mins" type="number" min="0" inputmode="numeric"></div><div><label class="fld" for="s-days">소요일</label><input class="fi2" id="s-days" type="number" min="0" inputmode="numeric"></div></div>
 <label class="fld" for="s-feel">감정 (선택)</label><select class="fi2" id="s-feel"><option value="">선택 안 함</option><option value="뭉클함">뭉클함</option><option value="설렘">설렘</option><option value="깨달음">깨달음</option><option value="위로">위로</option><option value="영감">영감</option><option value="지루함">지루함</option></select>
 <label class="fld" for="s-note">한 줄 감상 (선택)</label><input class="fi2" id="s-note" maxlength="50">
 <label class="fld" for="s-quote">인상 깊은 문장 (선택)</label><textarea class="fi2" id="s-quote" rows="2" maxlength="120"></textarea></div>
-<div class="c"><h3>영수증 미리보기</h3><div class="stage"><div class="rcp" id="s-rc"></div></div><div class="ft"><button id="s-save">이미지로 저장</button></div></div></section><section class="pn" id="p-sum"><div class="c"><h3>기간 이름 · 날짜는 자유예요</h3>
+<div class="c"><h3>영수증 미리보기</h3><div class="stage"><div class="rsh"><div class="rcp" id="s-rc"></div></div></div><div class="ft"><button id="s-save">이미지로 저장</button></div></div></section><section class="pn" id="p-sum"><div class="c"><h3>기간 이름 · 날짜는 자유예요</h3>
 <input class="fi2" id="m-label" aria-label="기간 이름" placeholder="예) 2026년 9월 / 2026년 / 여름 독서" maxlength="30">
 <div class="pre" id="m-pre"></div></div>
 <div class="c"><h3>읽은 책 추가</h3><input class="fi2" id="m-t" aria-label="책 제목" placeholder="책 제목 (입력 후 Enter)" maxlength="40">
@@ -59,12 +54,26 @@ button.p{padding:12px 18px;border:0;border-radius:10px;background:var(--ink);col
 <input class="fi2" id="m-p" aria-label="쪽수" type="number" min="0" inputmode="numeric" placeholder="쪽수 (선택)" style="margin-top:8px">
 <button class="p" id="m-add" style="width:100%;margin-top:8px">+ 추가</button><ul class="li" id="m-list"></ul>
 <div class="chips"><button id="m-clr">모두 지우기</button></div></div>
-<div class="c"><h3>결산 영수증</h3><div class="fun" id="m-fun"></div><div class="stage"><div class="rcp" id="m-rc"></div></div><div class="ft"><button id="m-save">이미지로 저장</button></div></div></section>
-<div class="ad">광고 영역</div><div class="c rl"><h3>읽어보면 좋은 글</h3><a href="articles/keep-reading-log/index.html">독서 기록을 오래 이어가는 5가지 방법</a><a href="articles/one-minute-review/index.html">1분 독후감 쓰는 법: 세 문장이면 충분합니다</a><a href="articles/reading-habit-30days/index.html">30일 독서 습관 만들기</a><a href="articles/index.html">글 전체 보기 →</a></div><div class="sf"><a href="about/index.html">소개</a> · <a href="guide/index.html">사용법</a> · <a href="articles/index.html">독서 기록법</a> · <a href="privacy/index.html">개인정보처리방침</a> · <a href="contact/index.html">문의</a><br>© 2026 독서 영수증 기록 · 입력한 내용은 이 브라우저에만 저장됩니다</div></div><script>
+<div class="c"><h3>결산 영수증</h3><div class="fun" id="m-fun"></div><div class="stage"><div class="rsh"><div class="rcp" id="m-rc"></div></div></div><div class="ft"><button id="m-save">이미지로 저장</button></div></div></section>
+</div><script>
 (function(){
 const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const row=(a,b,w)=>`<div class="r"><span>${a}</span><span${w?'':' class="nw"'}>${b}</span></div>`,D='<div class="d"></div>',END='<div class="d"></div><div class="bc"></div><div class="t">감사합니다. 또 읽어주세요!</div>';
-function png(id,name){if(!window.html2canvas)return alert('이미지 저장 도구를 불러오지 못했어요.');(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>html2canvas($(id),{scale:3,backgroundColor:'#f1eee8'})).then(c=>{const a=document.createElement('a');a.href=c.toDataURL('image/png');a.download=name+'.png';a.click()}).catch(()=>alert('이미지 저장에 실패했어요.'))}
+function tear(c,s){
+ const pad=80*s,W=c.width+pad*2,H=c.height+pad*2,o=document.createElement('canvas');o.width=W;o.height=H;
+ const x=o.getContext('2d'),g=x.createRadialGradient(W/2,H/2,Math.min(W,H)*.1,W/2,H/2,Math.max(W,H)*.75);
+ g.addColorStop(0,'#f4ebda');g.addColorStop(1,'#e5d8bf');x.fillStyle=g;x.fillRect(0,0,W,H);
+ const L=pad,T=pad,R=pad+c.width,B=pad+c.height,n=Math.round(c.width/(10*s)),tw=c.width/n,th=5*s;
+ let seed=7;const rnd=()=>(seed=seed*16807%2147483647)/2147483647;
+ x.beginPath();x.moveTo(L,T+th);
+ for(let i=0;i<n;i++){x.lineTo(L+i*tw+tw/2,T-rnd()*s);x.lineTo(L+(i+1)*tw,T+th)}
+ x.lineTo(R,B-th);
+ for(let i=0;i<n;i++){x.lineTo(R-i*tw-tw/2,B+rnd()*s);x.lineTo(R-(i+1)*tw,B-th)}
+ x.closePath();
+ x.save();x.shadowColor='rgba(90,70,40,.3)';x.shadowBlur=18*s;x.shadowOffsetY=6*s;x.fillStyle='#fdfdfb';x.fill();x.restore();
+ x.save();x.clip();x.drawImage(c,L,T);x.restore();
+ return o}
+function png(id,name){if(!window.html2canvas)return alert('이미지 저장 도구를 불러오지 못했어요.');(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>html2canvas($(id),{scale:3,backgroundColor:null})).then(c=>{const a=document.createElement('a');a.href=tear(c,3).toDataURL('image/png');a.download=name+'.png';a.click()}).catch(()=>alert('이미지 저장에 실패했어요.'))}
 const mts=[...document.querySelectorAll('.mt')];
 mts.forEach(b=>b.onclick=()=>{mts.forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.pn').forEach(p=>p.classList.toggle('on',p.id===b.dataset.p));try{localStorage.setItem('rr.mode',b.dataset.p)}catch(e){}});
 let m0='p-simple';try{m0=localStorage.getItem('rr.mode')||m0}catch(e){}
