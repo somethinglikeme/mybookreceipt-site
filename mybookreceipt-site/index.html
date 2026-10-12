@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>독서 영수증</title>
+<title>독서 영수증 기록</title>
 <meta name="description" content="읽은 책을 영수증으로 발행하고 이미지로 저장하세요. 월간·연간 독서 결산도 한 장으로 만들 수 있는 무료 도구.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding:wght@400;700&display=swap" rel="stylesheet">
@@ -34,7 +34,7 @@ button.p{padding:12px 18px;border:0;border-radius:10px;background:var(--ink);col
 .rcp .d{border-top:1px dashed #333;margin:8px 0}
 .rcp .r{display:flex;justify-content:space-between;gap:8px}.rcp .r span:first-child{min-width:0;overflow-wrap:anywhere}.rcp .r span:last-child{text-align:right;min-width:0;overflow-wrap:anywhere}.rcp .r span.nw{white-space:nowrap;flex:none;min-width:auto}
 .rcp .tot{font-weight:700;font-size:15px}
-.rcp .bc{height:32px;margin:10px auto 4px;width:80%;background:repeating-linear-gradient(90deg,#111 0 2px,#fff 2px 4px,#111 4px 5px,#fff 5px 9px,#111 9px 12px,#fff 12px 14px)}
+.rcp .bc{display:flex;justify-content:center;height:32px;margin:10px auto 4px}.rcp .bc i{display:block;height:100%;background:#111}.rcp .bc i.g{background:transparent}
 .ft{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:6px 0 24px}.ft button{border:1px solid var(--line);background:transparent;color:var(--mute);border-radius:8px;padding:7px 11px;font:inherit;font-size:12px;cursor:pointer}
 </style></head><body><div class="w">
 <h1>🧾 독서 영수증 기록</h1><p class="sub">읽은 책을 영수증으로 남겨요</p>
@@ -58,7 +58,7 @@ button.p{padding:12px 18px;border:0;border-radius:10px;background:var(--ink);col
 </div><script>
 (function(){
 const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const row=(a,b,w)=>`<div class="r"><span>${a}</span><span${w?'':' class="nw"'}>${b}</span></div>`,D='<div class="d"></div>',END='<div class="d"></div><div class="bc"></div><div class="t">감사합니다. 또 읽어주세요!</div>';
+const row=(a,b,w)=>`<div class="r"><span>${a}</span><span${w?'':' class="nw"'}>${b}</span></div>`,D='<div class="d"></div>',END=s=>'<div class="d"></div><div class="bc">'+bars(s)+'</div><div class="t">www.mybookreceipt.online</div>';
 function tear(c,s){
  const pad=80*s,W=c.width+pad*2,H=c.height+pad*2,o=document.createElement('canvas');o.width=W;o.height=H;
  const x=o.getContext('2d'),g=x.createRadialGradient(W/2,H/2,Math.min(W,H)*.1,W/2,H/2,Math.max(W,H)*.75);
@@ -73,6 +73,8 @@ function tear(c,s){
  x.save();x.shadowColor='rgba(90,70,40,.3)';x.shadowBlur=18*s;x.shadowOffsetY=6*s;x.fillStyle='#fdfdfb';x.fill();x.restore();
  x.save();x.clip();x.drawImage(c,L,T);x.restore();
  return o}
+function bars(s){let h=5381;for(const ch of String(s))h=(h*33+ch.charCodeAt(0))>>>0;const r=()=>(h=(h*1664525+1013904223)>>>0)/4294967296;let o='';for(let i=0;i<34;i++)o+='<i style="width:'+(1+Math.floor(r()*3))+'px"></i><i class="g" style="width:'+(1+Math.floor(r()*3))+'px"></i>';return o}
+const fname=(p,t,d)=>{const z=new Date(),ymd=(d||'').replace(/\D/g,'').slice(0,8)||z.getFullYear()+String(z.getMonth()+1).padStart(2,'0')+String(z.getDate()).padStart(2,'0'),n=String(t||'').replace(/[\\/:*?"<>|]/g,'').trim().replace(/\s+/g,'_').slice(0,30);return p+'_'+(n?n+'_':'')+ymd};
 function png(id,name){if(!window.html2canvas)return alert('이미지 저장 도구를 불러오지 못했어요.');(document.fonts?document.fonts.ready:Promise.resolve()).then(()=>html2canvas($(id),{scale:3,backgroundColor:null})).then(c=>{const a=document.createElement('a');a.href=tear(c,3).toDataURL('image/png');a.download=name+'.png';a.click()}).catch(()=>alert('이미지 저장에 실패했어요.'))}
 const mts=[...document.querySelectorAll('.mt')];
 mts.forEach(b=>b.onclick=()=>{mts.forEach(x=>x.classList.toggle('on',x===b));document.querySelectorAll('.pn').forEach(p=>p.classList.toggle('on',p.id===b.dataset.p));try{localStorage.setItem('rr.mode',b.dataset.p)}catch(e){}});
@@ -88,9 +90,9 @@ if(dd)x+=row('소요일',dd+'일');if(g('feel'))x+=row('감 정',esc(g('feel')))
 if(p)x+=D+`<div class="r tot"><span>합 계</span><span class="nw">${p}쪽</span></div>`;
 if(g('note'))x+=D+'<div>한줄감상</div><div>'+esc(g('note'))+'</div>';
 if(g('quote'))x+=D+'<div>인상깊은 문장</div><div>“'+esc(g('quote'))+'”</div>';
-$('s-rc').innerHTML=x+END}
+$('s-rc').innerHTML=x+END(g('title')+g('date'))}
 ['title','author','date','pages','mins','days','feel','note','quote'].forEach(k=>$('s-'+k).addEventListener('input',sr));sr();
-$('s-save').onclick=()=>png('s-rc','독서영수증_'+(g('title')||'book'));
+$('s-save').onclick=()=>png('s-rc',fname('독서영수증',g('title'),g('date')));
 const K='rr.summary.v1';let M={label:'',list:[]};try{M=JSON.parse(localStorage.getItem(K))||M}catch(e){}
 if(!Array.isArray(M.list))M.list=[];
 const put=()=>{try{localStorage.setItem(K,JSON.stringify(M))}catch(e){}};
@@ -115,13 +117,13 @@ const pg=L.reduce((a,b)=>a+(b.p||0),0),dy=L.filter(b=>b.d),avD=dy.length?dy.redu
 $('m-fun').innerHTML=funCard(pg);$('m-rc').innerHTML=`<h2>READING SUMMARY</h2><div class="t">독 서 결 산</div>${D}`+row('기 간',esc(M.label||'-'),1)+D+row('품 목','쪽 수')
 +L.map((b,i)=>row(`${i+1}. ${esc(b.t)}`,b.p?b.p:'-')+((b.a||b.d)?`<div class="by">${[b.a?esc(b.a):'',b.d?b.d+'일 소요':''].filter(Boolean).join(' · ')}</div>`:'')).join('')
 +D+`<div class="r tot"><span>합 계</span><span class="nw">${L.length}권${pg?' / '+pg+'쪽':''}</span></div>`
-+(avD?row('평균 소요일',(Math.round(avD*10)/10)+'일'):'')+FUNR(pg)+END}
++(avD?row('평균 소요일',(Math.round(avD*10)/10)+'일'):'')+FUNR(pg)+END(M.label+L.length)}
 $('m-label').oninput=e=>{M.label=e.target.value;put();mr()};
 function addB(){const t=$('m-t').value.trim();if(!t)return;M.list.push({t,a:$('m-a').value.trim(),d:n($('m-d').value),p:n($('m-p').value)});['m-t','m-a','m-d','m-p'].forEach(i=>$(i).value='');put();mr();$('m-t').focus()}
 $('m-add').onclick=addB;['m-t','m-a','m-d','m-p'].forEach(i=>$(i).onkeydown=e=>{if(e.key==='Enter')addB()});
 $('m-list').onclick=e=>{const i=e.target.dataset.x;if(i!==undefined){M.list.splice(+i,1);put();mr()}};
 $('m-clr').onclick=()=>{if(M.list.length&&confirm('추가한 책을 모두 지울까요?')){M.list=[];put();mr()}};
-$('m-save').onclick=()=>png('m-rc','독서결산_'+(M.label||'summary'));
+$('m-save').onclick=()=>png('m-rc',fname('독서결산',M.label,''));
 mr();
 })();
 </script></body></html>
